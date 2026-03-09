@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>R&G Professional Services</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #060810;
+      --navy: #080e1e;
+      --dark: #0c1428;
+      --blue: #1a6bff;
+      --blue-bright: #3d8bff;
+      --blue-glow: #0a47cc;
+      --mist: #8ca0c4;
+      --white: #f0f4ff;
+      --off-white: #c8d4ee;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 400;
+      overflow-x: hidden;
+    }
+
+    /* ─── HABLAMOS BANNER ─── */
+    .hablamos-banner {
+      background: var(--blue);
+      padding: 10px 60px;
+      display: flex; align-items: center; justify-content: center;
+      gap: 20px;
+    }
+    .hablamos-line { height: 1px; width: 40px; background: rgba(255,255,255,0.4); }
+    .hablamos-banner span {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 0.85rem;
+      letter-spacing: 0.28em; text-transform: uppercase;
+      color: #fff;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 60px;
+      background: rgba(6,8,16,0.97);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(26,107,255,0.1);
+    }
+    .logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800; font-size: 1.5rem;
+      letter-spacing: 0.08em; color: var(--white);
+    }
+    .logo span { color: var(--blue); }
+    .nav-right { display: flex; align-items: center; gap: 36px; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600; font-size: 0.85rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--mist); text-decoration: none; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .lang-toggle {
+      display: flex; align-items: center;
+      border: 1px solid rgba(255,255,255,0.12); overflow: hidden;
+    }
+    .lang-btn {
+      padding: 7px 14px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 0.75rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--mist); background: none; border: none;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .lang-btn.active { background: var(--blue); color: #fff; }
+    .lang-btn:not(.active):hover { color: var(--white); }
+    .nav-cta {
+      background: var(--blue); color: #fff !important;
+      padding: 10px 22px;
+    }
+    .nav-cta:hover { background: var(--blue-bright) !important; }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 90vh;
+      display: flex; align-items: center;
+      padding: 80px 60px;
+      position: relative; overflow: hidden;
+      background: #e8edf7;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 55% 75% at 78% 50%, rgba(26,107,255,0.18) 0%, transparent 70%);
+    }
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(26,107,255,0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26,107,255,0.07) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 75% 50%, black 0%, transparent 70%);
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 760px; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(26,107,255,0.1);
+      border: 1px solid rgba(26,107,255,0.35);
+      padding: 8px 18px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 0.75rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--blue-glow);
+      margin-bottom: 32px;
+      animation: fadeUp 0.8s ease both;
+    }
+    .hero-badge::before {
+      content: ''; width: 6px; height: 6px;
+      background: var(--blue); border-radius: 50%;
+      box-shadow: 0 0 8px var(--blue);
+      animation: pulse 2s ease infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.4); }
+    }
+    h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: clamp(3.2rem, 7vw, 6rem);
+      line-height: 0.95; letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: #0a0f1e;
+      margin-bottom: 28px;
+      animation: fadeUp 0.8s 0.1s ease both;
+    }
+    h1 em { font-style: normal; color: var(--blue); display: block; }
+    .hero-sub {
+      font-size: 1.1rem; font-weight: 400; line-height: 1.7;
+      color: #2a3a5c; max-width: 520px; margin-bottom: 48px;
+      animation: fadeUp 0.8s 0.2s ease both;
+    }
+    .hero-actions {
+      display: flex; gap: 16px; flex-wrap: wrap;
+      animation: fadeUp 0.8s 0.3s ease both;
+    }
+    .btn-primary {
+      background: var(--blue); color: #fff;
+      padding: 16px 36px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 0.9rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      border: none; cursor: pointer; text-decoration: none;
+      transition: all 0.2s; display: inline-block;
+    }
+    .btn-primary:hover { background: var(--blue-bright); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(26,107,255,0.4); }
+    .btn-outline {
+      background: transparent; color: #0a0f1e;
+      padding: 16px 36px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 0.9rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      border: 1px solid rgba(10,15,30,0.3);
+      cursor: pointer; text-decoration: none;
+      transition: all 0.2s; display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--blue); color: var(--blue); }
+
+    /* ─── STATS ─── */
+    .stats-strip {
+      background: var(--navy);
+      border-top: 1px solid rgba(26,107,255,0.2);
+      border-bottom: 1px solid rgba(26,107,255,0.2);
+      padding: 32px 60px; display: flex;
+    }
+    .stat {
+      flex: 1; text-align: center; padding: 0 20px;
+      border-right: 1px solid rgba(255,255,255,0.07);
+    }
+    .stat:last-child { border-right: none; }
+    .stat-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800; font-size: 2.4rem;
+      color: var(--blue-bright); line-height: 1;
+      display: block; margin-bottom: 6px;
+    }
+    .stat-label {
+      font-size: 0.78rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--mist);
+    }
+
+    /* ─── SECTION BASE ─── */
+    section { padding: 100px 60px; scroll-margin-top: 70px; }
+    .section-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 0.75rem;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--blue); margin-bottom: 16px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .section-tag::after {
+      content: ''; height: 1px; width: 50px;
+      background: var(--blue); opacity: 0.5;
+    }
+    h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800; font-size: clamp(2.2rem, 4vw, 3.2rem);
+      line-height: 1.05; text-transform: uppercase;
+      letter-spacing: -0.01em; margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 1rem; font-weight: 300; line-height: 1.75;
+      color: var(--mist); max-width: 500px; margin-bottom: 52px;
+    }
+
+    /* ─── SERVICES ─── */
+    #services { background: var(--navy); }
+    .services-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 52px; flex-wrap: wrap; gap: 24px; }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    .service-card {
+      background: var(--dark); padding: 48px 40px;
+      position: relative; overflow: hidden; transition: all 0.3s;
+    }
+    .service-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 2px; background: var(--blue);
+      transform: scaleX(0); transition: transform 0.3s; transform-origin: left;
+    }
+    .service-card:hover { background: #0f1a30; }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-icon {
+      width: 48px; height: 48px;
+      background: rgba(26,107,255,0.1); border: 1px solid rgba(26,107,255,0.25);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 28px; transition: all 0.3s;
+    }
+    .service-icon svg { width: 22px; height: 22px; stroke: var(--blue-bright); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .service-card:hover .service-icon { background: rgba(26,107,255,0.2); border-color: var(--blue); box-shadow: 0 0 20px rgba(26,107,255,0.2); }
+    .service-card h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 1.3rem;
+      letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 14px;
+    }
+    .service-card p { font-size: 0.9rem; font-weight: 300; line-height: 1.7; color: var(--mist); }
+    .service-num {
+      position: absolute; bottom: 28px; right: 28px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800; font-size: 3rem;
+      color: rgba(26,107,255,0.07); line-height: 1;
+    }
+
+    /* ─── WHY US ─── */
+    #why { background: var(--black); }
+    .why-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .why-box {
+      background: var(--navy); border: 1px solid rgba(26,107,255,0.15);
+      padding: 48px; position: relative;
+    }
+    .why-box::after {
+      content: ''; position: absolute; bottom: -14px; right: -14px;
+      width: 100%; height: 100%;
+      border: 1px solid rgba(26,107,255,0.07); z-index: -1;
+    }
+    .why-quote {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 300; font-size: 1.55rem;
+      line-height: 1.45; color: var(--white); margin-bottom: 28px;
+    }
+    .why-quote strong { font-weight: 700; color: var(--blue-bright); }
+    .why-attr { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mist); }
+    .check-list { list-style: none; display: flex; flex-direction: column; }
+    .check-list li { display: flex; gap: 16px; align-items: flex-start; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .check-list li:last-child { border-bottom: none; }
+    .check-icon {
+      width: 22px; height: 22px; min-width: 22px;
+      background: rgba(26,107,255,0.12); border: 1px solid var(--blue-glow);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.65rem; color: var(--blue-bright); margin-top: 3px; font-weight: 700;
+    }
+    .check-list li h4 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 1rem; letter-spacing: 0.06em;
+      text-transform: uppercase; margin-bottom: 5px;
+    }
+    .check-list li p { font-size: 0.88rem; font-weight: 300; line-height: 1.65; color: var(--mist); }
+
+    /* ─── SECTORS ─── */
+    #sectors { background: var(--navy); border-top: 1px solid rgba(26,107,255,0.12); }
+    .sectors-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; margin-top: 48px; }
+    .sector-card { background: var(--dark); padding: 48px; transition: background 0.3s; }
+    .sector-card:hover { background: #0f1a30; }
+    .sector-icon-wrap {
+      width: 44px; height: 44px;
+      background: rgba(26,107,255,0.1); border: 1px solid rgba(26,107,255,0.2);
+      display: flex; align-items: center; justify-content: center; margin-bottom: 24px;
+    }
+    .sector-icon-wrap svg { width: 20px; height: 20px; stroke: var(--blue-bright); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .sector-card h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 1.25rem;
+      text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 12px;
+    }
+    .sector-card p { font-size: 0.88rem; font-weight: 300; line-height: 1.7; color: var(--mist); }
+    .sector-tag {
+      display: inline-block; margin-top: 16px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--blue); border: 1px solid rgba(26,107,255,0.35); padding: 4px 12px;
+    }
+
+    /* ─── CONTACT ─── */
+    #contact { background: var(--black); }
+    .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .contact-item { display: flex; gap: 20px; align-items: flex-start; padding: 24px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .contact-item:first-of-type { padding-top: 0; }
+    .contact-item-icon {
+      width: 40px; height: 40px; min-width: 40px;
+      background: rgba(26,107,255,0.1); border: 1px solid rgba(26,107,255,0.2);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .contact-item-icon svg { width: 18px; height: 18px; stroke: var(--blue-bright); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .contact-item-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--mist); margin-bottom: 5px; }
+    .contact-item-value { font-size: 0.95rem; color: var(--white); }
+    .contact-form { background: var(--navy); border: 1px solid rgba(26,107,255,0.12); padding: 48px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+    .form-group label { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--mist); }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+      color: var(--white); padding: 14px 18px;
+      font-family: 'Barlow', sans-serif; font-size: 0.9rem; font-weight: 300;
+      outline: none; transition: border-color 0.2s; appearance: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--blue); background: rgba(26,107,255,0.05); }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-group select option { background: var(--dark); }
+    .form-submit {
+      width: 100%; background: var(--blue); color: #fff; border: none; padding: 18px;
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.9rem;
+      letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; margin-top: 8px; transition: all 0.2s;
+    }
+    .form-submit:hover { background: var(--blue-bright); box-shadow: 0 8px 30px rgba(26,107,255,0.35); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--navy); border-top: 1px solid rgba(26,107,255,0.15);
+      padding: 40px 60px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;
+    }
+    .footer-logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 1.2rem; letter-spacing: 0.08em; color: var(--white); }
+    .footer-logo span { color: var(--blue); }
+    .footer-center { text-align: center; }
+    .footer-copy { font-size: 0.82rem; color: var(--mist); font-weight: 300; }
+    .footer-hispanic { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--blue); margin-top: 6px; }
+    .footer-links { display: flex; gap: 28px; list-style: none; }
+    .footer-links a { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mist); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--blue-bright); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 900px) {
+      .hablamos-banner { padding: 10px 24px; }
+      nav { padding: 18px 24px; }
+      .nav-links { display: none; }
+      .hero { padding: 60px 24px; }
+      section { padding: 70px 24px; }
+      .stats-strip { padding: 24px; flex-wrap: wrap; }
+      .stat { flex: 0 0 50%; border-right: none; padding: 14px; }
+      .services-grid, .sectors-grid { grid-template-columns: 1fr; }
+      .why-layout, .contact-layout { grid-template-columns: 1fr; gap: 40px; }
+      .form-row { grid-template-columns: 1fr; }
+      footer { flex-direction: column; align-items: flex-start; padding: 32px 24px; }
+    }
+
+    /* ─── MODAL ─── */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 999;
+      background: rgba(6,8,16,0.88);
+      backdrop-filter: blur(6px);
+      align-items: center; justify-content: center;
+    }
+    .modal-overlay.open { display: flex; }
+
+    .modal {
+      background: var(--navy);
+      border: 1px solid rgba(26,107,255,0.2);
+      width: 100%; max-width: 560px;
+      max-height: 90vh; overflow-y: auto;
+      padding: 48px;
+      position: relative;
+      animation: fadeUp 0.3s ease;
+    }
+
+    .modal-close {
+      position: absolute; top: 20px; right: 24px;
+      background: none; border: none; color: var(--mist);
+      font-size: 1.4rem; cursor: pointer; line-height: 1;
+      transition: color 0.2s;
+    }
+    .modal-close:hover { color: var(--white); }
+
+    .modal h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800; font-size: 1.8rem;
+      text-transform: uppercase; letter-spacing: 0.02em;
+      margin-bottom: 6px;
+    }
+    .modal-sub {
+      font-size: 0.88rem; font-weight: 300;
+      color: var(--mist); margin-bottom: 32px; line-height: 1.6;
+    }
+
+    .modal-section-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 0.75rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--blue); margin-bottom: 14px;
+    }
+
+    .modal-input {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--white); padding: 12px 16px;
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.9rem; font-weight: 300;
+      outline: none; transition: border-color 0.2s;
+      width: 100%; margin-bottom: 16px;
+    }
+    .modal-input:focus { border-color: var(--blue); background: rgba(26,107,255,0.05); }
+
+    .check-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 8px; margin-bottom: 28px;
+    }
+
+    .check-option {
+      display: flex; align-items: center; gap: 10px;
+      padding: 12px 14px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      cursor: pointer; transition: all 0.2s;
+      user-select: none;
+    }
+    .check-option:hover { border-color: rgba(26,107,255,0.4); background: rgba(26,107,255,0.05); }
+    .check-option.selected { border-color: var(--blue); background: rgba(26,107,255,0.12); }
+
+    .check-option-box {
+      width: 16px; height: 16px; min-width: 16px;
+      border: 1px solid rgba(255,255,255,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.6rem; color: var(--blue); transition: all 0.2s;
+    }
+    .check-option.selected .check-option-box {
+      border-color: var(--blue); background: var(--blue); color: #fff;
+    }
+
+    .check-option-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600; font-size: 0.85rem;
+      letter-spacing: 0.05em; text-transform: uppercase;
+      color: var(--off-white);
+    }
+
+    .modal-divider {
+      height: 1px; background: rgba(255,255,255,0.06);
+      margin: 24px 0;
+    }
+
+    .modal-submit {
+      width: 100%; background: var(--blue); color: #fff;
+      border: none; padding: 16px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 0.9rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      cursor: pointer; transition: all 0.2s; margin-top: 8px;
+    }
+    .modal-submit:hover { background: var(--blue-bright); }
+    .modal-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .modal-note {
+      font-size: 0.78rem; color: var(--mist); font-weight: 300;
+      text-align: center; margin-top: 14px; line-height: 1.5;
+    }
+
+    .lang-btn-nav {
+      background: var(--blue); color: #fff !important;
+      padding: 10px 22px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700 !important; font-size: 0.8rem !important;
+      letter-spacing: 0.12em !important; text-transform: uppercase;
+      border: none; cursor: pointer; transition: background 0.2s;
+    }
+    .lang-btn-nav:hover { background: var(--blue-bright); }
+
+  </style>
+</head>
+<body>
+
+  <!-- HABLAMOS BANNER -->
+  <div class="hablamos-banner">
+    <div class="hablamos-line"></div>
+    <span data-en="We Speak Spanish &mdash; Hablamos Espa&ntilde;ol" data-es="Hablamos Espa&ntilde;ol &mdash; We Speak Spanish">We Speak Spanish &mdash; Hablamos Espa&ntilde;ol</span>
+    <div class="hablamos-line"></div>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">R<span>&</span>G <span style="color:var(--white);font-weight:300">Professional</span></div>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#services" data-en="Services" data-es="Servicios">Services</a></li>
+        <li><a href="#why" data-en="Why Us" data-es="Por Qu&eacute; Nosotros">Why Us</a></li>
+        <li><a href="#sectors" data-en="Sectors" data-es="Sectores">Sectors</a></li>
+        <li><button class="nav-cta lang-btn-nav" onclick="openQuoteModal()" data-en="Get a Quote" data-es="Cotizaci&oacute;n">Get a Quote</button></li>
+      </ul>
+      <div class="lang-toggle">
+        <button class="lang-btn active" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" onclick="setLang('es')">ES</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="hero-badge" data-en="Licensed &amp; Insured &middot; Residential &amp; Commercial" data-es="Licenciados y Asegurados &middot; Residencial y Comercial">Licensed &amp; Insured &middot; Residential &amp; Commercial</div>
+      <h1 data-en="Cleaner Spaces.<br><em>Safer Standards.</em>" data-es="Espacios M&aacute;s Limpios.<br><em>Mejores Est&aacute;ndares.</em>">Cleaner Spaces.<br><em>Safer Standards.</em></h1>
+      <p class="hero-sub" data-en="R&amp;G Professional Services delivers clinical-grade cleaning, disinfection, and floor care to medical facilities, businesses, and homes across the area." data-es="R&amp;G Professional Services ofrece limpieza de grado cl&iacute;nico, desinfecci&oacute;n y cuidado de pisos para instalaciones m&eacute;dicas, negocios y hogares en el &aacute;rea.">R&amp;G Professional Services delivers clinical-grade cleaning, disinfection, and floor care to medical facilities, businesses, and homes across the area.</p>
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="openQuoteModal()" data-en="Request a Quote" data-es="Solicitar Cotizaci&oacute;n">Request a Quote</button>
+        <button class="btn-outline" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})" data-en="Our Services" data-es="Nuestros Servicios">Our Services</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats-strip">
+    <div class="stat"><span class="stat-num">EPA</span><span class="stat-label" data-en="Approved Disinfectants" data-es="Desinfectantes Aprobados">Approved Disinfectants</span></div>
+    <div class="stat"><span class="stat-num">Flex</span><span class="stat-label" data-en="Scheduling Available" data-es="Horarios Flexibles">Scheduling Available</span></div>
+    <div class="stat"><span class="stat-num">Ins.</span><span class="stat-label" data-en="Fully Insured" data-es="Totalmente Asegurados">Fully Insured</span></div>
+    <div class="stat"><span class="stat-num">MBE</span><span class="stat-label" data-en="Minority Owned Business" data-es="Empresa de Minor&iacute;a">Minority Owned Business</span></div>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="services-header">
+      <div>
+        <div class="section-tag" data-en="What We Do" data-es="Lo Que Hacemos">What We Do</div>
+        <h2 data-en="Core Services" data-es="Servicios Principales">Core Services</h2>
+        <p class="section-sub" style="margin-bottom:0" data-en="Every job is performed to the highest standard — whether it's a clinic, office, or home." data-es="Cada trabajo se realiza con el m&aacute;s alto est&aacute;ndar, ya sea en una cl&iacute;nica, oficina o hogar.">Every job is performed to the highest standard &mdash; whether it's a clinic, office, or home.</p>
+      </div>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M3 3h18v4H3z"/><path d="M5 7v14M19 7v14M8 11h8M8 15h8"/></svg></div>
+        <h3 data-en="Deep Cleaning" data-es="Limpieza Profunda">Deep Cleaning</h3>
+        <p data-en="Thorough cleaning of all surfaces, fixtures, and hard-to-reach areas. Customized checklists for each facility type to ensure nothing is missed." data-es="Limpieza exhaustiva de todas las superficies, accesorios y &aacute;reas de dif&iacute;cil acceso. Listas personalizadas para cada tipo de instalaci&oacute;n.">Thorough cleaning of all surfaces, fixtures, and hard-to-reach areas. Customized checklists for each facility type to ensure nothing is missed.</p>
+        <div class="service-num">01</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3 data-en="Disinfection" data-es="Desinfecci&oacute;n">Disinfection</h3>
+        <p data-en="Hospital-grade disinfection using EPA-approved products. Effective against viruses, bacteria, and pathogens — critical for clinical environments." data-es="Desinfecci&oacute;n de grado hospitalario con productos aprobados por la EPA. Eficaz contra virus, bacterias y pat&oacute;genos, fundamental para entornos cl&iacute;nicos.">Hospital-grade disinfection using EPA-approved products. Effective against viruses, bacteria, and pathogens &mdash; critical for clinical environments.</p>
+        <div class="service-num">02</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="2" y="17" width="20" height="4" rx="1"/><path d="M6 17V9M18 17V9M4 9h16M6 9l1-5h10l1 5"/></svg></div>
+        <h3 data-en="Floor Waxing" data-es="Encerado de Pisos">Floor Waxing</h3>
+        <p data-en="Professional stripping, waxing, and buffing services for hard floors. Restores shine and extends floor life for commercial and residential spaces." data-es="Servicios profesionales de decapado, encerado y pulido para pisos duros. Restaura el brillo y prolonga la vida &uacute;til del piso.">Professional stripping, waxing, and buffing services for hard floors. Restores shine and extends floor life for commercial and residential spaces.</p>
+        <div class="service-num">03</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section id="why">
+    <div class="why-layout">
+      <div>
+        <div class="why-box">
+          <p class="why-quote" data-en='"We don&apos;t just clean &mdash; we create environments that are <strong>safe to work in, live in, and heal in.</strong>"' data-es='"No solo limpiamos &mdash; creamos entornos que son <strong>seguros para trabajar, vivir y sanar.</strong>"'>"We don't just clean &mdash; we create environments that are <strong>safe to work in, live in, and heal in.</strong>"</p>
+          <div class="why-attr">R&amp;G Professional Services</div>
+        </div>
+      </div>
+      <div>
+        <div class="section-tag" data-en="Why R&amp;G" data-es="Por Qu&eacute; R&amp;G">Why R&amp;G</div>
+        <h2 data-en="Our Commitment" data-es="Nuestro Compromiso">Our Commitment</h2>
+        <ul class="check-list">
+          <li>
+            <div class="check-icon">&#10003;</div>
+            <div>
+              <h4 data-en="Clinic-Tested Standards" data-es="Est&aacute;ndares de Cl&iacute;nica">Clinic-Tested Standards</h4>
+              <p data-en="Our primary client is a medical clinic. Every process we use is built to meet the rigorous expectations of healthcare environments." data-es="Nuestro cliente principal es una cl&iacute;nica m&eacute;dica. Cada proceso que usamos est&aacute; dise&ntilde;ado para cumplir con los rigurosos est&aacute;ndares del sector salud.">Our primary client is a medical clinic. Every process we use is built to meet the rigorous expectations of healthcare environments.</p>
+            </div>
+          </li>
+          <li>
+            <div class="check-icon">&#10003;</div>
+            <div>
+              <h4 data-en="Reliable &amp; On Schedule" data-es="Confiables y Puntuales">Reliable &amp; On Schedule</h4>
+              <p data-en="We show up on time, every time. Clients count on us for consistent, recurring service without follow-up reminders." data-es="Llegamos a tiempo, siempre. Los clientes conf&iacute;an en nosotros para un servicio consistente sin necesidad de recordatorios.">We show up on time, every time. Clients count on us for consistent, recurring service without follow-up reminders.</p>
+            </div>
+          </li>
+          <li>
+            <div class="check-icon">&#10003;</div>
+            <div>
+              <h4 data-en="Trusted in Homes Too" data-es="Tambi&eacute;n en el Hogar">Trusted in Homes Too</h4>
+              <p data-en="We bring the same professionalism to residential clients — discrete, thorough, and respectful of your space." data-es="Llevamos el mismo profesionalismo a los clientes residenciales: discretos, minuciosos y respetuosos de su espacio.">We bring the same professionalism to residential clients &mdash; discrete, thorough, and respectful of your space.</p>
+            </div>
+          </li>
+          <li>
+            <div class="check-icon">&#10003;</div>
+            <div>
+              <h4 data-en="Fully Insured" data-es="Totalmente Asegurados">Fully Insured</h4>
+              <p data-en="Complete liability coverage gives our clients peace of mind with every visit." data-es="La cobertura total de responsabilidad civil brinda tranquilidad a nuestros clientes en cada visita.">Complete liability coverage gives our clients peace of mind with every visit.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTORS -->
+  <section id="sectors">
+    <div class="section-tag" data-en="Who We Serve" data-es="A Qui&eacute;n Servimos">Who We Serve</div>
+    <h2 data-en="Our Sectors" data-es="Nuestros Sectores">Our Sectors</h2>
+    <p class="section-sub" data-en="We serve both commercial and residential clients with the same level of care and professionalism." data-es="Atendemos a clientes comerciales y residenciales con el mismo nivel de cuidado y profesionalismo.">We serve both commercial and residential clients with the same level of care and professionalism.</p>
+    <div class="sectors-grid">
+      <div class="sector-card">
+        <div class="sector-icon-wrap"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <h3 data-en="Medical &amp; Clinical" data-es="M&eacute;dico y Cl&iacute;nico">Medical &amp; Clinical</h3>
+        <p data-en="Specialized cleaning and disinfection protocols for clinics, medical offices, and healthcare environments. Compliant with infection control best practices." data-es="Protocolos especializados de limpieza y desinfecci&oacute;n para cl&iacute;nicas y consultorios m&eacute;dicos. Cumple con las mejores pr&aacute;cticas de control de infecciones.">Specialized cleaning and disinfection protocols for clinics, medical offices, and healthcare environments. Compliant with infection control best practices.</p>
+        <div class="sector-tag" data-en="Primary Focus" data-es="Enfoque Principal">Primary Focus</div>
+      </div>
+      <div class="sector-card">
+        <div class="sector-icon-wrap"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <h3 data-en="Residential" data-es="Residencial">Residential</h3>
+        <p data-en="Home cleaning tailored to your routine and preferences. One-time deep cleans or recurring visits — we work around your schedule." data-es="Limpieza del hogar adaptada a su rutina. Limpiezas profundas &uacute;nicas o visitas recurrentes, trabajamos seg&uacute;n su horario.">Home cleaning tailored to your routine and preferences. One-time deep cleans or recurring visits &mdash; we work around your schedule.</p>
+        <div class="sector-tag" data-en="Available Now" data-es="Disponible Ahora">Available Now</div>
+      </div>
+      <div class="sector-card">
+        <div class="sector-icon-wrap"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg></div>
+        <h3 data-en="Commercial Offices" data-es="Oficinas Comerciales">Commercial Offices</h3>
+        <p data-en="Keep your workplace clean, healthy, and professional. After-hours scheduling available to minimize disruption to your business." data-es="Mantenga su lugar de trabajo limpio, saludable y profesional. Horario fuera de horas disponible para minimizar interrupciones.">Keep your workplace clean, healthy, and professional. After-hours scheduling available to minimize disruption to your business.</p>
+        <div class="sector-tag" data-en="Available Now" data-es="Disponible Ahora">Available Now</div>
+      </div>
+      <div class="sector-card">
+        <div class="sector-icon-wrap"><svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
+        <h3 data-en="Post-Construction" data-es="Post-Construcci&oacute;n">Post-Construction</h3>
+        <p data-en="Detailed cleanup after renovation or construction — dust removal, floor prep, and surface restoration to make spaces move-in ready." data-es="Limpieza detallada tras renovaci&oacute;n o construcci&oacute;n: eliminaci&oacute;n de polvo, preparaci&oacute;n del piso y restauraci&oacute;n de superficies.">Detailed cleanup after renovation or construction &mdash; dust removal, floor prep, and surface restoration to make spaces move-in ready.</p>
+        <div class="sector-tag" data-en="Available Now" data-es="Disponible Ahora">Available Now</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-layout">
+      <div>
+        <div class="section-tag" data-en="Get in Touch" data-es="Cont&aacute;ctenos">Get in Touch</div>
+        <h2 data-en="Request a Quote" data-es="Solicitar Cotizaci&oacute;n">Request a Quote</h2>
+        <p class="section-sub" data-en="Ready to experience the R&amp;G difference? Fill out the form or reach us directly. We respond within 24 hours." data-es="&iquest;Listo para la diferencia R&amp;G? Complete el formulario o cont&aacute;ctenos directamente. Respondemos en menos de 24 horas.">Ready to experience the R&amp;G difference? Fill out the form or reach us directly. We respond within 24 hours.</p>
+        <div class="contact-item">
+          <div class="contact-item-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 012 1.18 2 2 0 014 3v3a2 2 0 01-1.44 1.93 14 14 0 006.51 6.51A2 2 0 0122 16.92z"/></svg></div>
+          <div>
+            <div class="contact-item-label" data-en="Phone" data-es="Tel&eacute;fono">Phone</div>
+            <div class="contact-item-value">904-862-1388</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div>
+            <div class="contact-item-label" data-en="Email" data-es="Correo">Email</div>
+            <div class="contact-item-value">groberto1198@yahoo.com</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div>
+            <div class="contact-item-label" data-en="Service Area" data-es="&Aacute;rea de Servicio">Service Area</div>
+            <div class="contact-item-value" data-en="Duval &amp; St. Johns County" data-es="Condado de Duval y St. Johns">Duval &amp; St. Johns County</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label data-en="First Name" data-es="Nombre">First Name</label>
+            <input type="text" data-placeholder-en="John" data-placeholder-es="Juan" placeholder="John" />
+          </div>
+          <div class="form-group">
+            <label data-en="Last Name" data-es="Apellido">Last Name</label>
+            <input type="text" data-placeholder-en="Smith" data-placeholder-es="Garc&iacute;a" placeholder="Smith" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label data-en="Email Address" data-es="Correo Electr&oacute;nico">Email Address</label>
+          <input type="email" placeholder="john@example.com" />
+        </div>
+        <div class="form-group">
+          <label data-en="Phone Number" data-es="N&uacute;mero de Tel&eacute;fono">Phone Number</label>
+          <input type="tel" placeholder="(000) 000-0000" />
+        </div>
+        <div class="form-group">
+          <label data-en="Service Type" data-es="Tipo de Servicio">Service Type</label>
+          <select>
+            <option value="" disabled selected data-en="Select a service" data-es="Seleccionar servicio">Select a service</option>
+            <option data-en="Deep Cleaning" data-es="Limpieza Profunda">Deep Cleaning</option>
+            <option data-en="Disinfection" data-es="Desinfecci&oacute;n">Disinfection</option>
+            <option data-en="Floor Waxing" data-es="Encerado de Pisos">Floor Waxing</option>
+            <option data-en="Multiple Services" data-es="M&uacute;ltiples Servicios">Multiple Services</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label data-en="Facility Type" data-es="Tipo de Instalaci&oacute;n">Facility Type</label>
+          <select>
+            <option value="" disabled selected data-en="Select facility type" data-es="Seleccionar tipo">Select facility type</option>
+            <option data-en="Medical / Clinical" data-es="M&eacute;dico / Cl&iacute;nico">Medical / Clinical</option>
+            <option data-en="Residential Home" data-es="Hogar Residencial">Residential Home</option>
+            <option data-en="Commercial Office" data-es="Oficina Comercial">Commercial Office</option>
+            <option data-en="Post-Construction" data-es="Post-Construcci&oacute;n">Post-Construction</option>
+            <option data-en="Other" data-es="Otro">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label data-en="Message (Optional)" data-es="Mensaje (Opcional)">Message (Optional)</label>
+          <textarea data-placeholder-en="Tell us about your space, frequency needed, or any special requirements..." data-placeholder-es="Cu&eacute;ntenos sobre su espacio, frecuencia necesaria o requisitos especiales..." placeholder="Tell us about your space, frequency needed, or any special requirements..."></textarea>
+        </div>
+        <button class="form-submit" onclick="sendContactForm()" data-en="Send Request &rarr;" data-es="Enviar Solicitud &rarr;">Send Request &rarr;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">R<span>&</span>G Professional Services</div>
+    <div class="footer-center">
+      <p class="footer-copy" data-en="&copy; 2025 R&amp;G Professional Services. All rights reserved." data-es="&copy; 2025 R&amp;G Professional Services. Todos los derechos reservados.">&copy; 2025 R&amp;G Professional Services. All rights reserved.</p>
+      <p class="footer-hispanic" data-en="Minority Owned Business" data-es="Empresa de Minor&iacute;a">Minority Owned Business</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#services" data-en="Services" data-es="Servicios">Services</a></li>
+      <li><a href="#sectors" data-en="Sectors" data-es="Sectores">Sectors</a></li>
+      <li><a href="#contact" data-en="Contact" data-es="Contacto">Contact</a></li>
+    </ul>
+  </footer>
+
+  <!-- QUOTE MODAL -->
+  <div class="modal-overlay" id="quoteModal" onclick="handleOverlayClick(event)">
+    <div class="modal">
+      <button class="modal-close" onclick="closeQuoteModal()">&times;</button>
+      <h3 data-en="Get a Quote" data-es="Solicitar Cotizaci&oacute;n">Get a Quote</h3>
+      <p class="modal-sub" data-en="Select your services and we'll send a quote to you directly." data-es="Seleccione sus servicios y le enviaremos una cotizaci&oacute;n directamente.">Select your services and we'll send a quote to you directly.</p>
+
+      <div class="modal-section-label" data-en="Your Information" data-es="Su Informaci&oacute;n">Your Information</div>
+      <input class="modal-input" id="modal-name" type="text" data-placeholder-en="Full Name" data-placeholder-es="Nombre Completo" placeholder="Full Name" />
+      <input class="modal-input" id="modal-phone" type="tel" placeholder="Phone Number" />
+      <input class="modal-input" id="modal-email" type="email" placeholder="Email Address (optional)" />
+
+      <div class="modal-divider"></div>
+
+      <div class="modal-section-label" data-en="Facility Type" data-es="Tipo de Instalaci&oacute;n">Facility Type</div>
+      <div class="check-grid" id="facility-options">
+        <div class="check-option" onclick="toggleOption(this)" data-value="Medical / Clinical">
+          <div class="check-option-box">&#10003;</div>
+          <span class="check-option-label" data-en="Medical / Clinical" data-es="M&eacute;dico / Cl&iacute;nico">Medical / Clinical</span>
+        </div>
+        <div class="check-option" onclick="toggleOption(this)" data-value="Residential Home">
+          <div class="check-option-box">&#10003;</div>
+          <span class="check-option-label" data-en="Residential" data-es="Residencial">Residential</span>
+        </div>
+        <div class="check-option" onclick="toggleOption(this)" data-value="Commercial Office">
+          <div class="check-option-box">&#10003;</div>
+          <span class="check-option-label" data-en="Commercial Office" data-es="Oficina Comercial">Commercial Office</span>
+        </div>
+        <div class="check-option" onclick="toggleOption(this)" data-value="Post-Construction">
+          <div class="check-option-box">&#10003;</div>
+          <span class="check-option-label" data-en="Post-Construction" data-es="Post-Construcci&oacute;n">Post-Construction</span>
+        </div>
+      </div>
+
+      <div class="modal-section-label" data-en="Services Needed" data-es="Servicios Necesarios">Services Needed</div>
+      <div class="check-grid" id="service-options">
+        <div class="check-option" onclick="toggleOption(this)" data-value="Deep Cleaning">
+          <div class="check-option-box">&#10003;</div>
+          <span class="check-option-label" data-en="Deep Cleaning" data-es="Limpieza Profunda">Deep Cleaning</span>
+        </div>
+        <div class="check-option" onclick="toggleOption(this)" data-value="Disinfection">
+          <div class="check-option-box">&#10003;</div>
+          <span class="check-option-label" data-en="Disinfection" data-es="Desinfecci&oacute;n">Disinfection</span>
+        </div>
+        <div class="check-option" onclick="toggleOption(this)" data-value="Floor Waxing">
+          <div class="check-option-box">&#10003;</div>
+          <span class="check-option-label" data-en="Floor Waxing" data-es="Encerado de Pisos">Floor Waxing</span>
+        </div>
+        <div class="check-option" onclick="toggleOption(this)" data-value="Multiple / Unsure">
+          <div class="check-option-box">&#10003;</div>
+          <span class="check-option-label" data-en="Multiple / Unsure" data-es="M&uacute;ltiple / No s&eacute;">Multiple / Unsure</span>
+        </div>
+      </div>
+
+      <div class="modal-section-label" data-en="Additional Notes (Optional)" data-es="Notas Adicionales (Opcional)">Additional Notes (Optional)</div>
+      <textarea class="modal-input" id="modal-notes" rows="3" data-placeholder-en="Any details about your space, frequency, or special requirements..." data-placeholder-es="Detalles sobre su espacio, frecuencia o requisitos especiales..." placeholder="Any details about your space, frequency, or special requirements..." style="resize:vertical;"></textarea>
+
+      <button class="modal-submit" id="modal-submit-btn" onclick="submitQuote()" data-en="Send Quote Request &rarr;" data-es="Enviar Solicitud &rarr;">Send Quote Request &rarr;</button>
+      <p class="modal-note" data-en="This will open your email app with your request pre-filled and send it to R&G." data-es="Esto abrir&aacute; su aplicaci&oacute;n de correo con su solicitud prellenada.">This will open your email app with your request pre-filled and send it to R&amp;G.</p>
+    </div>
+  </div>
+
+  <script>
+    // ─── LANGUAGE ───
+    function setLang(lang) {
+      document.querySelectorAll('.lang-btn').forEach(function(btn) {
+        btn.classList.toggle('active', btn.textContent.trim().toLowerCase() === lang);
+      });
+      document.querySelectorAll('[data-en]').forEach(function(el) {
+        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.tagName === 'OPTION') return;
+        var text = el.getAttribute('data-' + lang);
+        if (text !== null && text !== '') el.innerHTML = text;
+      });
+      document.querySelectorAll('select option[data-en]').forEach(function(opt) {
+        var text = opt.getAttribute('data-' + lang);
+        if (text !== null && text !== '') opt.textContent = text;
+      });
+      document.querySelectorAll('[data-placeholder-en]').forEach(function(el) {
+        var ph = el.getAttribute('data-placeholder-' + lang);
+        if (ph !== null && ph !== '') el.placeholder = ph;
+      });
+      document.documentElement.lang = lang;
+    }
+
+    // ─── MODAL ───
+    function openQuoteModal() {
+      document.getElementById('quoteModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeQuoteModal() {
+      document.getElementById('quoteModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function handleOverlayClick(e) {
+      if (e.target === document.getElementById('quoteModal')) closeQuoteModal();
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeQuoteModal();
+    });
+
+    function toggleOption(el) {
+      el.classList.toggle('selected');
+    }
+
+    function getSelected(containerId) {
+      var selected = [];
+      document.querySelectorAll('#' + containerId + ' .check-option.selected').forEach(function(el) {
+        selected.push(el.getAttribute('data-value'));
+      });
+      return selected;
+    }
+
+    function submitQuote() {
+      var name    = document.getElementById('modal-name').value.trim();
+      var phone   = document.getElementById('modal-phone').value.trim();
+      var email   = document.getElementById('modal-email').value.trim();
+      var notes   = document.getElementById('modal-notes').value.trim();
+      var facilities = getSelected('facility-options');
+      var services   = getSelected('service-options');
+
+      if (!name || !phone) {
+        alert('Please enter your name and phone number.');
+        return;
+      }
+      if (facilities.length === 0 && services.length === 0) {
+        alert('Please select at least one facility type or service.');
+        return;
+      }
+
+      var body = 'NEW QUOTE REQUEST — R&G Professional Services\n';
+      body += '============================================\n\n';
+      body += 'Name: ' + name + '\n';
+      body += 'Phone: ' + phone + '\n';
+      if (email) body += 'Email: ' + email + '\n';
+      body += '\nFacility Type(s):\n';
+      if (facilities.length > 0) {
+        facilities.forEach(function(f) { body += '  - ' + f + '\n'; });
+      } else {
+        body += '  Not specified\n';
+      }
+      body += '\nServices Needed:\n';
+      if (services.length > 0) {
+        services.forEach(function(s) { body += '  - ' + s + '\n'; });
+      } else {
+        body += '  Not specified\n';
+      }
+      if (notes) body += '\nAdditional Notes:\n' + notes + '\n';
+      body += '\n============================================\n';
+      body += 'Sent via R&G Professional Services website.';
+
+      var subject = 'Quote Request from ' + name;
+      var mailto = 'mailto:groberto1198@yahoo.com'
+        + '?subject=' + encodeURIComponent(subject)
+        + '&body=' + encodeURIComponent(body);
+
+      window.location.href = mailto;
+      closeQuoteModal();
+    }
+
+    // ─── CONTACT FORM ───
+    function sendContactForm() {
+      var fname    = document.querySelector('input[type=text]').value.trim();
+      var lname    = document.querySelectorAll('input[type=text]')[1].value.trim();
+      var email    = document.querySelector('input[type=email]').value.trim();
+      var phone    = document.querySelector('input[type=tel]').value.trim();
+      var service  = document.querySelectorAll('select')[0].value;
+      var facility = document.querySelectorAll('select')[1].value;
+      var message  = document.querySelector('textarea').value.trim();
+
+      if (!fname && !phone) {
+        alert('Please fill in at least your name and phone number.');
+        return;
+      }
+
+      var name = (fname + ' ' + lname).trim();
+      var body = 'NEW QUOTE REQUEST — R&G Professional Services\n';
+      body += '============================================\n\n';
+      body += 'Name: ' + (name || 'Not provided') + '\n';
+      body += 'Phone: ' + (phone || 'Not provided') + '\n';
+      if (email) body += 'Email: ' + email + '\n';
+      body += 'Service: ' + (service || 'Not specified') + '\n';
+      body += 'Facility: ' + (facility || 'Not specified') + '\n';
+      if (message) body += '\nMessage:\n' + message + '\n';
+      body += '\n============================================\n';
+      body += 'Sent via R&G Professional Services website.';
+
+      var subject = 'Quote Request from ' + (name || 'Website Visitor');
+      var mailto = 'mailto:groberto1198@yahoo.com'
+        + '?subject=' + encodeURIComponent(subject)
+        + '&body=' + encodeURIComponent(body);
+
+      window.location.href = mailto;
+    }
+  </script>
+</body>
+</html>
